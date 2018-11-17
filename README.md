@@ -43,7 +43,7 @@ Tokens are created with JWT, the payload is public. Here is how it look:
         "account": "username"
     }
     
-Tokens are valid for 3600 seconds.
+Tokens are valid for 14200 seconds.
 
 ### Libaries
 
