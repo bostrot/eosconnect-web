@@ -8,13 +8,17 @@ Clone the repo and run
 
     npm install
     
-Add env vars:
+Create `config.js` in root folder. Then edit and add:
 
-    stripeKey = Used for payments for new apps
-    sessionKey = A random string. Used to encrypt session cookies
-    db_user = Database user
-    db_pass = Database password
-    jwt_token = Random string.
+```
+module.exports = {
+    jwt_token: "RANDOM_STRING",
+    postback: "/SOME_POSTBACK_URL",
+    base_url: "https://eosconnect.me/",
+    api: "https://eos.greymass.com",
+    port: "3000",
+};
+```
     
 ### Run
 
