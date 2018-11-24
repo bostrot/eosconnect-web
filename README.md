@@ -26,9 +26,7 @@ module.exports = {
     
 ### Demo
 
-A demo implementation can be found at [https://demo.eosconnect.app](https://demo.eosconnect.app).
-The source code for this app is availabe on github: [https://github.com/wehmoen/eosconnect-example-nodejs-app](https://github.com/wehmoen/eosconnect-example-nodejs-app)
-
+A demo implementation can be found at [https://eosconnect.me](https://eosconnect.me).
 
 ### API
 
