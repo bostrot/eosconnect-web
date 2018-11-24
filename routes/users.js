@@ -1,10 +1,11 @@
 var express = require('express');
 let helper = require('../helper');
 let EosApi = require('eosjs-api');
-let eos = EosApi({httpEndpoint: 'https://eos.greymass.com'});
+let config = require('../config.js');
+let eos = EosApi({httpEndpoint: config.api});
 var router = express.Router();
 
-/* GET users listing. */
+// check data about user and log acces for debugging
 router.post('/me', async (req, res, next) => {
     let {authorization = null} = req.headers;
     let token = await helper.db.getToken(authorization);
