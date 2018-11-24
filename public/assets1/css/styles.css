@@ -1,0 +1,41 @@
+.block-intro img {
+    width: 30%;
+    margin: 1em;
+}
+.block-intro {
+    margin: 0 auto;
+}
+.btn-outline-primary:hover {
+    color: white;
+}
+.btn-outline-primary {
+    color:rgb(72,68,88);
+    font-size:20px;
+    width:195px;
+    padding:-80px;
+    margin:-18px;
+}
+.btn-light {
+    background-color:#c8c8c8 !important;
+    background-position:center !important;
+    background-size:cover !important;
+    font-size:18px !important;
+    color: white;
+}
+hr {
+    margin-bottom: 0;
+}
+.about-me.p {
+    font-size: 27px;
+}
+.newsletter-subscribe .container {
+    background-color: #ffffff;
+}
+.newsletter-subscribe .container .intro p {
+    font-size: 27px;
+}
+.animated-gif {
+    width: 328px;
+    height: 334px;
+    margin: 0 auto;
+}
