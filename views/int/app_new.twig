@@ -10,19 +10,19 @@
         <div class="col">
             <div class="alert alert-info">
                 <i class="fa fa-info-circle"></i>
-                To prevent fraud we will charge you a small service fee of 6.99€. This is a one time payment and all
+                To prevent fraud we will charge you a small service fee of $5. This is a one time payment and all
                 your data are securely submitted over https.
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <form action="/int/apps/new" method="post">
+            <form id="newapp_form" action="https://www.coinpayments.net/index.php" method="post">
                 <div class="form-group">
                     <label class="control-label" for="name">
                         App Name
                     </label>
-                    <input required maxlength="12" minlength="4" class="form-control" id="name" name="app_name"
+                    <input required maxlength="12" minlength="4" class="form-control" id="app_name" name="custom"
                            type="text"/>
                     <small>Min length: 4, Max length: 12, Must be unique</small>
                 </div>
@@ -30,45 +30,79 @@
                     <label class="control-label" for="name">
                         Description
                     </label>
-                    <textarea required maxlength="32" rows="5" class="form-control" name="description"
+                    <textarea required maxlength="32" rows="5" class="form-control" name="custom" id="description"
                               type="text"></textarea>
                     <small>Max length: 32</small>
                 </div>
                 <div class="form-group">
-                    <label for="tags">App Logo (Optimal resolution: 1024x1024. Max. filesize: 5MB)</label>
-                    <div class="input-group">
-                        <input required type="url" class="form-control" value="" id="previewimage" name="previewimage"
-                               readonly="" aria-label="Preview Image">
-                        <div class="input-group-append">
-                            <button id="upload_now" class="upldr-btn btn btn-sm btn-gradient-primary" type="button">
-                                Select Image
-                            </button>
-                        </div>
-                    </div>
-                    <input accept="image/*" id="upload_select" type="file" class="d-none">
+                    <label for="tags">App Logo (optimal resolution: 1024x1024)</label>
+                    <input required type="url" maxlength="128" minlength="4" value="" class="form-control" id="previewimage" name="custom"
+                           type="text" aria-label="Preview Image"/>
+                    <small>Must start with https.</small>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="name">
                         Redirect Urls
                     </label>
-                    <textarea required class="form-control" rows="5" id="name" name="redirect_uris"
+                    <textarea required class="form-control" rows="5" id="redirect_uris" name="custom"
                               type="text"></textarea>
                     <small>One per line. Must start with http or https</small>
+                    <p id="error-msg" style="color: red;"></p>
                 </div>
                 <div class="form-group">
-                    <script
-                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_live_cTcbcvamTZb1wRHdJmKuwmY9"
-                            data-amount="699"
-                            data-name="EOSconnect"
-                            data-description="A new Oauth2 App for EOSconnect."
-                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            data-locale="auto"
-                            data-zip-code="true"
-                            data-label="Create New App"
-                            data-currency="eur">
-                    </script>
+                    <input type="hidden" name="cmd" value="_pay_simple">
+                    <input type="hidden" name="reset" value="1">
+                    <input type="hidden" name="merchant" value="0d9b49af27896d6194b251c7b88d67f7">
+                    <input type="hidden" name="item_name" value="EOSconnect App">
+                    <input type="hidden" name="item_desc" value="To prevent fraud we will charge you a small service. This is a one time payment and all your data are securely submitted over https.">
+                    <input type="hidden" name="currency" value="USD">
+                    <input type="hidden" name="amountf" value="5.00000000">
+                    <input type="hidden" name="want_shipping" value="0">
+                    <input type="hidden" name="success_url" value="https://eosconnect.me/int/apps?tx=loading">
+                    <input type="hidden" name="cancel_url" value="https://eosconnect.me/int/apps">
+                    <input type="hidden" name="custom" value="{{ username }}">
+                    <img id="sendBTN" src="https://www.coinpayments.net/images/pub/buynow-wide-blue.png" alt="Jetzt kaufen mit CoinPayments.net">
                 </div>
+                <script>
+                    var customFields = document.getElementsByName('custom');
+                    document.getElementById('sendBTN').onclick = function() {
+                        var custom = []; 
+                        for (var i = 0; i < 5; i++) { 
+                            custom.push(customFields[i].value)
+                        }; 
+                        customFields[4].value = custom; 
+                        console.log(custom);
+                        fetch("/int/apps/new",
+                            {
+                                method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    app_name: custom[0],
+                                    description: custom[1],
+                                    previewimage: custom[2],
+                                    redirect_uris: custom[3]
+                                })
+                            })
+                            .then(function(res){ return res.json(); })
+                            .then(function(data){
+                                console.log(data);
+                                console.log(data.status);
+                                if (data.status === "success") {
+                                    document.getElementById('newapp_form').submit(function(event){
+                                        // cancels the form submission
+                                        event.preventDefault();
+                                        console.log("all ok")
+                                        // do whatever you want here
+                                    });
+                                } else {
+                                    document.getElementById('error-msg').innerText = "Check your input, server returned: " + data.error;
+                                }
+                        })
+                    };
+                </script>
             </form>
         </div>
     </div>

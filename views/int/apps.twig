@@ -4,10 +4,12 @@
     <div class="row">
         <div class="col">
             <h2>My Apps
-                <small>This are my apps</small>
             </h2>
         </div>
     </div>
+    {% if tx is defined %}
+        <p> Your transaction is processing, check back later... </p>
+    {% endif %}
     <div class="row">
         <div class="col">
             <ul class="list-group">

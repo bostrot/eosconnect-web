@@ -21,24 +21,17 @@
                     <small>Max length: 32</small>
                 </div>
                 <div class="form-group">
-                    <label for="tags">App Logo (Optimal resolution: 1024x1024. Max. filesize: 5MB)</label>
-                    <div class="input-group">
-                        <input required type="url" class="form-control" value="{{ app.logo }}" id="previewimage"
-                               name="previewimage" readonly="" aria-label="Preview Image">
-                        <div class="input-group-append">
-                            <button id="upload_now" class="upldr-btn btn btn-sm btn-gradient-primary" type="button">
-                                Select Image
-                            </button>
-                        </div>
-                    </div>
-                    <input accept="image/*" id="upload_select" type="file" class="d-none">
+                    <label for="tags">App Logo (optimal resolution: 1024x1024)</label>
+                    <input required type="url" maxlength="128" minlength="4" value="{{ app.logo }}" class="form-control" id="previewimage" name="previewimage"
+                           type="text" aria-label="Preview Image"/>
+                    <small>Must start with https.</small>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="name">
                         Redirect Urls
                     </label>
                     <textarea required class="form-control" rows="5" id="name" name="redirect_uris"
-                              type="text">{{ app.redirect_uri|join('\r\n') }}</textarea>
+                              type="text">{{ app.redirect_uri }}</textarea>
                     <small>One per line. Must start with http or https</small>
                 </div>
                 <div class="form-group">

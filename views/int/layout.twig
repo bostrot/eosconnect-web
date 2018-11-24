@@ -22,7 +22,7 @@
 
 <body>
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="/assets/img/sidebar-4.jpg">
+    <div class="sidebar">
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/int" class="simple-text">
@@ -32,32 +32,41 @@
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/int">
-                        <i class="nc-icon nc-chart-pie-35"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="/int/apps">
-                        <i class="nc-icon nc-notes"></i>
+                        <i class="fas fa-clipboard-list"></i>
                         <p>My Apps</p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="/int/authorized">
-                        <i class="nc-icon nc-paper-2"></i>
+                        <i class="fas fa-newspaper"></i>
                         <p>Authorized Apps</p>
                     </a>
                 </li>
-                <li>
-                    <a class="nav-link" href="https://www.npmjs.com/package/@wehmoen/ec-sdk" target="_blank">
-                        <i class="nc-icon nc-atom"></i>
-                        <p>NPM Package & Docs</p>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Support</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" target="_blank" href="https://discord.gg/JZAab7U">
-                        <i class="nc-icon nc-alien-33"></i>
-                        <p>Support</p>
+                    <a class="nav-link active" target="_blank" href="https://discord.gg/fZvGq3D">
+                        <i class="fab fa-discord"></i>
+                        <p>Discord</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="https://discuss.bostrot.com/" target="_blank">
+                        <i class="fas fa-comments"></i>
+                        <p>Forum</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="https://github.com/bostrot/eosconnect-web" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <p>Source code on GitHub</p>
                     </a>
                 </li>
             </ul>
@@ -106,34 +115,12 @@
         <footer class="footer">
             <div class="container">
                 <nav>
-                    <ul class="footer-menu">
-                        <li>
-                            <a href="/int">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/int/apps">
-                                My Apps
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/int/authorized">
-                                Authorized Apps
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://eosconnect.docs.apiary.io/#" target="_blank">
-                                Documentation
-                            </a>
-                        </li>
-                    </ul>
                     <p class="copyright text-center">
                         ©
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="https://eosconnect.app">EOSconnect</a>
+                        <a href="https://eosconnect.me">EOSconnect</a>
                     </p>
                 </nav>
             </div>
@@ -154,7 +141,7 @@
 <script src="/assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="/assets/js/plugins/bootstrap-notify.js"></script>
-<script src="https://wehmoen.github.io/pixelhosting-js-sdk/pixelhosting.js"></script>
+<!--script src="https://wehmoen.github.io/pixelhosting-js-sdk/pixelhosting.js"></script-->
 <script src="/assets/js/main.js"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="/assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>

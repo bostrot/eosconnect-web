@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col">
             <h2>Authorized Apps
-                <small>This apps have access to my account. To revoke its' access just click its' name.</small>
+                <small>Click to revoke an app.</small>
             </h2>
         </div>
     </div>
@@ -12,9 +12,11 @@
         <div class="col">
             <ul class="list-group">
                 {% for app in apps %}
-                    <li class="list-group-item">
-                        <a href="/int/authorized/{{ app.client_id }}/revoke">{{ app.client_id }}</a>
-                    </li>
+                    {% if app.client_id %}
+                        <li class="list-group-item">
+                            <a href="/int/authorized/{{ app.client_id }}/revoke">{{ app.client_id }}</a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
                 {% if apps.length == 0 %}
                     <li class="list-group-item">
