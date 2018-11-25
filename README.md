@@ -1,4 +1,5 @@
-# EOSconnect
+# EOSconnect 
+##### Fork of [eosconnect-web](https://github.com/wehmoen/eosconnect-web) by [@wehmoen](https://github.com/wehmoen).
 ##### A slightly different eosconnect-web fork for the latest EOS API working with SQLite3 and own broadcaster.
 ##### Allow users to sign in to your application using their EOS account.
 
